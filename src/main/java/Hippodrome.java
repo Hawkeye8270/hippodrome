@@ -8,19 +8,22 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 public class Hippodrome {
-    public static final Logger logger = LogManager.getLogger(Main.class);
+    public static final Logger logger = LogManager.getLogger(Hippodrome.class);
 
     private final List<Horse> horses;
 
     public Hippodrome(List<Horse> horses) {
         if (isNull(horses)) {
-            logger.error("Hippodrome: Horses list is null");
+            logger.error("Horses list is null");
             throw new IllegalArgumentException("Horses cannot be null.");
         } else if (horses.isEmpty()) {
+            logger.error("Horses list is empty.");
             throw new IllegalArgumentException("Horses cannot be empty.");
         }
 
         this.horses = horses;
+
+        logger.debug("Создание Hippodrome, лошадей [" + horses.size() + "]" );
     }
 
     public List<Horse> getHorses() {
